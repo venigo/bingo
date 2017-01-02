@@ -1,0 +1,209 @@
+/*!
+ * Start Bootstrap - Shop Homepage (http://startbootstrap.com/)
+ * Copyright 2013-2016 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
+ */
+
+body {
+    padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+     color: black;
+     font-family: Verdana, Arial, Helvetica, sans-serif;
+     font-size: 1rem;
+     background: -webkit-radial-gradient(5px 5px, circle, #f2f2f2, #f9f9f9);
+    background: -moz-radial-gradient(5px 5px, circle, #f2f2f2, #f9f9f9);
+    background: radial-gradient(5px 5px, circle, #f2f2f2, #333);
+}
+.navbar-inverse {
+    color: #fff !important;
+    background-color: #222;
+    box-shadow: 0px 5px 5px #666;
+    background: -webkit-radial-gradient(circle at 50% 1000%, #81e8f6, #76deef 1%, #055194 80%, #062745 100%);
+    background: -moz-radial-gradient(circle at 50% 1000%, #81e8f6, #76deef 1%, #055194 80%, #062745 100%);
+    background: radial-gradient(circle at 50% 1000%, #81e8f6, #76deef 1%, #055194 80%, #062745 100%);
+}
+
+.play-btn{
+    margin-bottom: 1rem;
+}
+.card75{
+    width:100%;
+    border: 1px solid #ddd;
+    box-shadow: 5px 5px 5px #999;
+    border-radius: 4px;
+    padding:5px;
+    margin: 5px;
+}
+.card90{
+    width:100%;
+    border: 1px solid #ddd;
+    box-shadow: 5px 5px 5px #999;
+    border-radius: 4px;
+    padding:5px;
+    margin: 5px;
+}
+.table75-container{
+    max-height: 415px;
+    overflow-y: scroll;
+}
+.table90-container{
+    max-height: 415px;
+    overflow-y: scroll;
+}
+.table75 {
+        border: 1px solid #ddd;
+        width:100%;
+    }
+
+.table75 th, td {
+    padding: 8px 0px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+.table75 th{
+    background-color:#5bc0de !important;
+    background: -webkit-radial-gradient(25px 25px, circle, #5bc0de, #000);
+    background: -moz-radial-gradient(25px 25px, circle, #5bc0de, #000);
+    background: radial-gradient(25px 25px, circle, #5bc0de, #000);
+}
+.table75 td[class*="pattern"]{
+    background-color:#f0ad4e !important;
+    background: -webkit-radial-gradient(25px 25px, circle, #f0ad4e, #999);
+    background: -moz-radial-gradient(25px 25px, circle, #f0ad4e, #999);
+    background: radial-gradient(25px 25px, circle, #f0ad4e, #999);
+}
+.table90 {
+        border: 1px solid #ddd;
+        width:100%;
+    }
+
+.table90 th, td {
+    padding: 8px 0px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+.table90 th{
+    background-color:#5bc0de !important;
+    background: -webkit-radial-gradient(25px 25px, circle, #5bc0de, #000);
+    background: -moz-radial-gradient(25px 25px, circle, #5bc0de, #000);
+    background: radial-gradient(25px 25px, circle, #5bc0de, #000);
+}
+.table90 td[class*="pattern"]{
+    background-color:#f0ad4e !important;
+    background: -webkit-radial-gradient(25px 25px, circle, #f0ad4e, #999);
+    background: -moz-radial-gradient(25px 25px, circle, #f0ad4e, #999);
+    background: radial-gradient(25px 25px, circle, #f0ad4e, #999);
+}
+.table75-ball-counter, .table90-ball-counter{
+    width:100%;
+}
+
+.free_square{
+    background-color: #04B431; 
+    color: #fff;
+    font-size: 1rem;
+}
+.matched-cell{
+    background-color: #04B431; 
+    border-radius: 50%;
+    background: -webkit-radial-gradient(5px 5px, circle, #04B431, #333);
+    background: -moz-radial-gradient(5px 5px, circle, #04B431, #333);
+    background: radial-gradient(5px 5px, circle, #04B431, #333);
+    color: #fff;
+    font-size: 1rem;
+}
+.green{
+    background-color: #04B431;
+    background: -webkit-radial-gradient(5px 5px, circle, #04B431, #333);
+    background: -moz-radial-gradient(5px 5px, circle, #04B431, #333);
+    background: radial-gradient(5px 5px, circle, #04B431, #333);
+}
+.row.no-gutter [class*='col-']:not(:first-child),
+.row.no-gutter [class*='col-']:not(:last-child) {
+  padding-right: 5px;
+  padding-left: 0;
+}
+footer {
+    border-top: 1px solid #e3e3e3;
+    margin: 25px 0;
+    padding:5px;
+}
+
+
+/* Pattter T cells */
+
+
+
+
+#free {
+     background-color: #F66;
+}
+
+/* rolling ball*/
+.counter-ball-th{
+  background: red;
+  color:#e6e6e6;
+  background: -webkit-radial-gradient(100px 25px, circle, red, #000);
+  background: -moz-radial-gradient(100px 25px, circle, red, #000);
+  background: radial-gradient(100px 25px, circle, red, #000);
+}
+.circle {
+  display: block;
+  position:relative;
+  width: 100px;
+  height: 100px;
+  background: red;
+  border-radius: 50%;
+  background: -webkit-radial-gradient(25px 25px, circle, red, #000);
+  background: -moz-radial-gradient(25px 25px, circle, red, #000);
+  background: radial-gradient(25px 25px, circle, red, #000);
+ 
+}
+.ball-container{
+    border: 10px solid #337ab7;
+}
+
+.ball_num{
+  position:absolute;
+  top:16%;
+    left:22%;
+  color:#e6e6e6;
+  font-size:4rem;
+      -webkit-animation-name: spin;
+    -webkit-animation-duration: 4000ms;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-name: spin;
+    -moz-animation-duration: 4000ms;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-timing-function: linear;
+    -ms-animation-name: spin;
+    -ms-animation-duration: 4000ms;
+    -ms-animation-iteration-count: infinite;
+    -ms-animation-timing-function: linear;
+    
+    animation-name: spin;
+    animation-duration: 4000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@-ms-keyframes spin {
+    from { -ms-transform: rotate(0deg); }
+    to { -ms-transform: rotate(360deg); }
+}
+@-moz-keyframes spin {
+    from { -moz-transform: rotate(0deg); }
+    to { -moz-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
