@@ -3,7 +3,7 @@
  * Copyright 2013-2016 Start Bootstrap
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
  */
-
+ 
 body {
     padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
      color: black;
@@ -146,6 +146,36 @@ footer {
   background: -moz-radial-gradient(100px 25px, circle, red, #000);
   background: radial-gradient(100px 25px, circle, red, #000);
 }
+
+.ball-container{
+    border: 10px solid #337ab7;
+}
+.bingoball {
+    width: 10em;
+    height: 10em;
+    position: relative;
+    -webkit-animation: spin 2s linear infinite;
+    -moz-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+    transition: all ease-in-out 2s;
+    }
+
+.bingoball h3 {
+    position: absolute;
+    font-size: 3em;
+    left: 20%;
+    top: 12%;
+    color: #333;
+    width: 2em;
+    text-align: center;
+}
+.bingoballright{margin-left:80%;transition:all ease-in-out 2s;}
+@-moz-keyframes spin{100%{-moz-transform:rotate(360deg);}}@-webkit-keyframes spin{100%{-webkit-transform:rotate(360deg);}}@keyframes spin{100%{-webkit-transform:rotate(360deg);transform:rotate(360deg);}}
+.bingoballright2{margin-left:80%;transition:all ease-in-out 2s;}
+@-moz-keyframes spin{100%{-moz-transform:rotate(360deg);}}@-webkit-keyframes spin{100%{-webkit-transform:rotate(360deg);}}@keyframes spin{100%{-webkit-transform:rotate(360deg);transform:rotate(360deg);}}
+
+
+/*
 .circle {
   display: block;
   position:relative;
@@ -158,10 +188,6 @@ footer {
   background: radial-gradient(25px 25px, circle, red, #000);
  
 }
-.ball-container{
-    border: 10px solid #337ab7;
-}
-
 .ball_num{
   position:absolute;
   top:16%;
@@ -207,3 +233,4 @@ footer {
         transform:rotate(360deg);
     }
 }
+*/

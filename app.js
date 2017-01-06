@@ -14,3 +14,4 @@ controllers.api(app);
 //html(app);
 
 app.listen(port);
+console.log('Bingo started on: ', port);
