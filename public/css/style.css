@@ -148,19 +148,21 @@ footer {
 }
 
 .ball-container{
-    border: 10px solid #337ab7;
+    border-top: 5px solid #337ab7;
+    border-bottom: 5px solid #337ab7;
+    height:120px;
 }
-.bingoball {
+#rolling_ball > div { margin-left:-25rem; margin-right:22rem;
     width: 10em;
-    height: 10em;
+    height: 10em; float: left;
     position: relative;
     -webkit-animation: spin 2s linear infinite;
     -moz-animation: spin 2s linear infinite;
     animation: spin 2s linear infinite;
     transition: all ease-in-out 2s;
     }
-
-.bingoball h3 {
+.smallball{width:5em !important;}
+#rolling_ball > div > h3 {
     position: absolute;
     font-size: 3em;
     left: 20%;
@@ -170,9 +172,10 @@ footer {
     text-align: center;
 }
 .bingoballright{margin-left:80%;transition:all ease-in-out 2s;}
-@-moz-keyframes spin{100%{-moz-transform:rotate(360deg);}}@-webkit-keyframes spin{100%{-webkit-transform:rotate(360deg);}}@keyframes spin{100%{-webkit-transform:rotate(360deg);transform:rotate(360deg);}}
-.bingoballright2{margin-left:80%;transition:all ease-in-out 2s;}
-@-moz-keyframes spin{100%{-moz-transform:rotate(360deg);}}@-webkit-keyframes spin{100%{-webkit-transform:rotate(360deg);}}@keyframes spin{100%{-webkit-transform:rotate(360deg);transform:rotate(360deg);}}
+@-moz-keyframes spin{100%{-moz-transform:rotate(360deg);}}
+@-webkit-keyframes spin{100%{-webkit-transform:rotate(360deg);}}
+@keyframes spin{100%{-webkit-transform:rotate(360deg);transform:rotate(360deg);}}
+.toleft{translateX(-100%);}
 
 
 /*
