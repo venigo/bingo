@@ -152,7 +152,7 @@ footer {
     border-bottom: 5px solid #337ab7;
     height:120px;
 }
-#rolling_ball > div { margin-left:-25rem; margin-right:22rem;
+#rolling_ball > div { margin-left:-25rem; margin-right:2rem;
     width: 10em;
     height: 10em; float: left;
     position: relative;
@@ -161,7 +161,14 @@ footer {
     animation: spin 2s linear infinite;
     transition: all ease-in-out 2s;
     }
-.smallball{width:5em !important;}
+.smallball{margin-left:-25rem; margin-right:2rem;
+    width: 10em;
+    height: 10em; float: left;
+    position: relative;
+    -webkit-animation: spin 30s linear infinite !important;
+    -moz-animation: spin 30s linear infinite !important;
+    animation: spin 30s linear infinite !important;
+    transition: all ease-in-out 2s !important;}
 #rolling_ball > div > h3 {
     position: absolute;
     font-size: 3em;

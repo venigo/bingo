@@ -380,10 +380,27 @@ $( document ).ready(function() {
      }, 2500);
         //console.log(array75);
     function animate(cnt){
-        if(cnt > 4){
+        
+        var z = cnt - 1; //console.log(z);
+        var y = cnt - 2;
+        var x = cnt - 3;
+        if(cnt == 1){
+            $('.bingoball'+cnt).animate({left: '850px',opacity:'1'}, 500, animate);
+        } else if(cnt == 2) {
             $('.bingoball'+cnt).animate({left: '750px',opacity:'1'}, 500, animate);
+        } else if(cnt == 3) {
+            $('.bingoball'+cnt).animate({left: '650px',opacity:'1'}, 500, animate);
         } else {
-            $('.bingoball'+cnt).animate({left: '700px',opacity:'1'}, 500, animate);
+            $('.bingoball'+cnt).animate({left: '550px',opacity:'1'}, 500, animate);
+            
+            console.log(z);
+            //$('.bingoball'+z).css('left:650px','-webkit-animation:inherit','animation:inherit', 'transition:inherit');
+            $('.bingoball'+z).css('left','650px');
+            $('.bingoball'+z).addClass('smallball');
+            $('.bingoball'+y).css('left','750px');
+            //$('.bingoball1').addClass('smallball');
+            $('.bingoball'+x).css('left','850px');
+            //$('.bingoball2').addClass('smallball');
         }
     }
 
