@@ -53,8 +53,9 @@ module.exports = function(app){
 				return;
 			}
 			Bingo.rooms = rooms;
+			res.render('bingo90', {Bingo:Bingo})
 		})
-	    res.render('bingo90', {Bingo:Bingo})
+	    
 	})
 	
 

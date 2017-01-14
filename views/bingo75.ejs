@@ -250,9 +250,9 @@
 
 <script type="text/javascript">
 $( document ).ready(function() {
-    $('.play75').on('click', function(e){ //alert('ko');
+    $('.play75').on('click', function(e){ 
         var room = e.target.title;
-        var card = $('#cards').val(); alert(card);
+        var card = $('#cards').val();
         window.location = '/bingo75?cards='+card+'&room='+room;
     })
     <% if(Bingo.cards > 0){ %>
