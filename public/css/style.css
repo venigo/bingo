@@ -21,7 +21,18 @@ body {
     background: -moz-radial-gradient(circle at 50% 1000%, #81e8f6, #76deef 1%, #055194 80%, #062745 100%);
     background: radial-gradient(circle at 50% 1000%, #81e8f6, #76deef 1%, #055194 80%, #062745 100%);
 }
-
+.navbar a:link {
+    color: green;
+}
+.navbar a:visited {
+    color: green;
+}
+.navbar a:hover {
+    color: red;
+}
+.navbar a:active {
+    color: yellow;
+}
 .play-btn{
     margin-bottom: 1rem;
 }
@@ -183,7 +194,18 @@ footer {
 @-webkit-keyframes spin{100%{-webkit-transform:rotate(360deg);}}
 @keyframes spin{100%{-webkit-transform:rotate(360deg);transform:rotate(360deg);}}
 .toleft{translateX(-100%);}
-
+.red{
+  border-color: red;
+  color:red;
+}
+.green_clr{
+  color:green;
+}
+.room{
+    background: grey;
+    padding: 1rem;
+    border-bottom: 2px solid greenyellow;
+}
 
 /*
 .circle {

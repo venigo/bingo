@@ -1,13 +1,31 @@
 
 var express = require('express');
+var session = require('express-session');
 var controllers = require('./controllers');
+//var bodyParser = require('body-parser');
 //var html = require('./controllers/html');
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://127.0.0.1:27017/bingo', function(err){
+	if(err){
+		console.log('mongodb could not connect', err);
+		//res.render('error',{error:err})
+		return err;
+	}
+	console.log('Mongodb Connected ..!')
+});
 var app = express();
 
 var port = process.env.PORT || 3030;
 
+
+
 app.use('/assets', express.static(__dirname + '/public'));
 app.set('view engine', 'ejs');
+app.use(session({
+  secret: 'sfsfsf78789gegwe7ew3',
+  resave: false,
+  saveUninitialized: true
+}));
 
 controllers.html(app);
 controllers.api(app);
