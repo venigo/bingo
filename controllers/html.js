@@ -31,9 +31,11 @@ module.exports = function(app){
 				return;
 			}
 			Bingo.rooms = rooms;
+			console.log(Bingo)
+	    	res.render('bingo75', {Bingo:Bingo})
 		})
-		console.log(Bingo)
-	    res.render('bingo75', {Bingo:Bingo})
+		
+	    //res.redirect('/bingo75');
 	})
 	app.get('/bingo90', function(req, res){
 		if(!req.session.user){
