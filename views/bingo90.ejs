@@ -1,21 +1,66 @@
-<%- include('header'); %>
+<%- include('header90'); %>
 
     <!-- Page Content -->
     <div class="container">
         <div class="row">
-            <div class="col-md-3">
-                <p class="lead">Players</p>
-                <div class="list-group">
-                    <a href="#" class="list-group-item">Player 1</a>
-                    <a href="#" class="list-group-item">Player 2</a>
-                    <a href="#" class="list-group-item">Player 3</a>
-                </div>
-                <div>
+            <div class="col-md-4">
+                <!-- <div class="row">
+                    <div class="col-sm-6">
+                        <div class="list-group">
+                            <a href="#" class="list-group-item">Player 1</a>
+                            <a href="#" class="list-group-item">Player 2</a>
+                            <a href="#" class="list-group-item">Player 3</a>
+                        </div>
+                    <div>
+                    <div class="col-sm-6">
+                        <div class="list-group">
+                            <a href="#" class="list-group-item">Player 1</a>
+                            <a href="#" class="list-group-item">Player 2</a>
+                            <a href="#" class="list-group-item">Player 3</a>
+                        </div>
+                    <div>
+                </div> -->
+                <div class="card90">
+                    <table class="table90 pattern" >
+                        <tr>
+                            <td>Players
+                            <ul class="nav nav-pills nav-stacked" style="    padding: 1rem; max-height: 120px;overflow-y: scroll;">
+                              <li class="active"><a href="#">Peter</a></li>
+                              <li class="active"><a href="#">Robert</a></li>
+                              <li class="active"><a href="#">John</a></li>
+                              <li class="active"><a href="#">Lidia</a></li>
+                              <li class="active"><a href="#">Misha</a></li>
+                              <li class="active"><a href="#">Deepak</a></li>
+                              <li class="active"><a href="#">Deepak</a></li>
+                              <li class="active"><a href="#">Sarah</a></li>
+                              <li class="active"><a href="#">Rosy</a></li>
+                            </ul>
+                  
+                        </td>
+                            <td>
+                            Prize
+                                <ul class="nav nav-pills nav-stacked" style="    padding: 1rem; max-height:60px;overflow-y: scroll;">
+                              <li class="active"><a href="#">Full Card: $10</a></li>
+                                                       
+                            </ul>
+                            Winners
+                            <ul class="nav nav-pills nav-stacked" style="    padding: 1rem; max-height: 60px;overflow-y: scroll;">
+                                  <li class="active"><a href="#">Peter</a></li>
+                                  <li class="active"><a href="#">Robert</a></li>
+                                  <li class="active"><a href="#">John</a></li>
+                               </ul>
+                            </td>
+                        </tr>
+                    </table> 
                     
-                </div> 
+                </div>
+                <div class="clearfix"></div>
+                <div class="card90" style="height: 360px;">
+                    <h1>Chat Box</h1>
+                </div>
             </div>
-            <div class="col-md-9">
-                <div class="row no-gutter table90-container">
+            <div class="col-md-8">
+                <div class="row table90-container">
                     <%  
                         if(Bingo.cards > 0){
                         for(var i=0; i < Bingo.cards; i++) { 
@@ -64,7 +109,7 @@
                     </div>
                     <%      } 
                         } else {
-                        for(var i=1; i < 5; i++) {
+                        for(var i=1; i < 9; i++) {
                     %>
 <div class="col-md-6"><div class="card90" style="height: 130px;">Card <%= i %></div></div>
                     <%  }    } %>
@@ -78,10 +123,10 @@
         <!--chat row-->
         <div class="row">
             <div class="col-md-9">
-                <div id="rolling_ball" class="card90 ball-container">
-                    <!-- <div class="circle"><div class="ball_num "></div></div> -->
-                </div>
-                <div class="card75 text-center">
+                <!-- <div id="rolling_ball" class="card90 ball-container">
+
+                </div> -->
+                <!-- <div class="card90 text-center">
                     <h4>Rooms: Choose cards and click on Play to enter the room. </h4>
                     <select name="cards" id="cards" style="width:100px;margin: 0 auto;" class="form-control">
                             <%  for(var j=1; j < 21; j++) {   %>
@@ -110,13 +155,13 @@
                 </div>
                 
                 <% } else { %>
-                <div class="card75" style="height: 360px;">
+                <div class="card90" style="height: 360px;">
                     <h1>Chat Container</h1>
                 </div>
-                <% } %>
+                <% } %> -->
             </div>
             <div class="col-md-3">
-                <div class="card90">
+                <!-- <div class="card90">
                     <table class="table90-ball-counter" >
                         <tr>
                             <td width="100%" colspan="5" class="counter-ball-th">
@@ -251,7 +296,7 @@
                             <td id="counter_ball_90">90</td>
                         </tr>
                     </table>
-                </div>
+                </div> -->
             </div>
         </div>
 
@@ -320,21 +365,21 @@ $( document ).ready(function() {
             var y = cnt - 2;
             var x = cnt - 3;
             if(cnt == 1){
-                $('.bingoball'+cnt).animate({left: '850px',opacity:'1'}, 500, animate);
+                $('.bingoball'+cnt).animate({left: '1050px',opacity:'1'}, 500, animate);
             } else if(cnt == 2) {
-                $('.bingoball'+cnt).animate({left: '750px',opacity:'1'}, 500, animate);
+                $('.bingoball'+cnt).animate({left: '950px',opacity:'1'}, 500, animate);
             } else if(cnt == 3) {
-                $('.bingoball'+cnt).animate({left: '650px',opacity:'1'}, 500, animate);
+                $('.bingoball'+cnt).animate({left: '850px',opacity:'1'}, 500, animate);
             } else {
-                $('.bingoball'+cnt).animate({left: '550px',opacity:'1'}, 500, animate);
+                $('.bingoball'+cnt).animate({left: '650px',opacity:'1'}, 500, animate);
                 
                 console.log(z);
                 //$('.bingoball'+z).css('left:650px','-webkit-animation:inherit','animation:inherit', 'transition:inherit');
-                $('.bingoball'+z).css('left','650px');
+                $('.bingoball'+z).css('left','850px');
                 $('.bingoball'+z).addClass('smallball');
-                $('.bingoball'+y).css('left','750px');
+                $('.bingoball'+y).css('left','950px');
                 //$('.bingoball1').addClass('smallball');
-                $('.bingoball'+x).css('left','850px');
+                $('.bingoball'+x).css('left','1050px');
                 //$('.bingoball2').addClass('smallball');
             }
         }

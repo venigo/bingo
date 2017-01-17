@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Homepage - Play Bingo 90 Balls!!</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="/assets/css/style90.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+<!-- <div class="container"> -->
+    <div class="row header-row">
+       <!--  <div class="col-md-3"></div> -->
+        <div class="col-md-12">
+            <div class="top-nav pull-left">
+                <ul class="nav nav-pills nav-stacked"">
+                  <li class="active"><a href="/">Home</a></li>
+                  <li class="active"><a href="#">Balls (<span id="counter_ball">0</span>)</a></li>
+                  <li class="active"><a href="#" data-toggle="modal" data-target="#modalRooms">Rooms</a></li>
+            </ul>
+            </div>
+            <div id="rolling_ball" class="card90-header ball-container">
+
+            </div>
+        </div>
+        
+    </div>
+<!-- </div> -->
+<!-- /.container -->
+
+<!-- Modal -->
+<div class="modal fade" id="modalRooms" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" style="background: #f9f9f9;">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Rooms</h4>
+      </div>
+      <div class="text-center">
+                    <h4>Choose cards and click on Play to enter the room. </h4>
+                    <select name="cards" id="cards" style="width:100px;margin: 0 auto;" class="form-control">
+                            <%  for(var j=1; j < 21; j++) {   %>
+                            <option value="<%= j %>"><%= j %></option>
+                            <%  }  %>
+                    </select>
+                </div>
+      <div class="modal-body">
+        <% if(Bingo.rooms.length > 0){ 
+                        for(i=0;i<Bingo.rooms.length;i++){
+                    %>
+                    <div class="row card90">
+                        <div class="col-md-4 room-name">
+                            <h5>Room : <%= Bingo.rooms[i].name %></h5></div>
+                        <div class="col-md-4 room-desc">
+                            <%= Bingo.rooms[i].description %>
+                        </div>
+                        <div class="col-md-2 room-name">
+                            
+                        </div>
+                        <div class="col-md-2">
+                            <a title="<%= Bingo.rooms[i]._id %>" class="play90 btn btn-brown pull-right">Play</a>
+                        </div>
+                    </div>
+                    <% }  %>
+          
+                
+                <% } else { %>
+                <div class="card90" style="height: 160px;">
+                    <h1>There is no room.!</h1>
+                </div>
+                <%  } %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+
