@@ -44,22 +44,12 @@ body {
     padding:5px;
     margin: 5px;
 }
-.card90{
-    width:100%;
-    border: 1px solid #ddd;
-    box-shadow: 5px 5px 5px #999;
-    border-radius: 4px;
-    padding:5px;
-    margin: 5px;
-}
+
 .table75-container{
     max-height: 415px;
     overflow-y: scroll;
 }
-.table90-container{
-    max-height: 415px;
-    overflow-y: scroll;
-}
+
 .table75 {
         border: 1px solid #ddd;
         width:100%;
@@ -77,28 +67,6 @@ body {
     background: radial-gradient(25px 25px, circle, #5bc0de, #000);
 }
 .table75 td[class*="pattern"]{
-    background-color:#f0ad4e !important;
-    background: -webkit-radial-gradient(25px 25px, circle, #f0ad4e, #999);
-    background: -moz-radial-gradient(25px 25px, circle, #f0ad4e, #999);
-    background: radial-gradient(25px 25px, circle, #f0ad4e, #999);
-}
-.table90 {
-        border: 1px solid #ddd;
-        width:100%;
-    }
-
-.table90 th, td {
-    padding: 8px 0px;
-    border: 1px solid #ddd;
-    text-align: center;
-}
-.table90 th{
-    background-color:#5bc0de !important;
-    background: -webkit-radial-gradient(25px 25px, circle, #5bc0de, #000);
-    background: -moz-radial-gradient(25px 25px, circle, #5bc0de, #000);
-    background: radial-gradient(25px 25px, circle, #5bc0de, #000);
-}
-.table90 td[class*="pattern"]{
     background-color:#f0ad4e !important;
     background: -webkit-radial-gradient(25px 25px, circle, #f0ad4e, #999);
     background: -moz-radial-gradient(25px 25px, circle, #f0ad4e, #999);

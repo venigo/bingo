@@ -5,6 +5,7 @@ var controllers = require('./controllers');
 //var bodyParser = require('body-parser');
 //var html = require('./controllers/html');
 var mongoose = require('mongoose');
+
 mongoose.connect('mongodb://127.0.0.1:27017/bingo', function(err){
 	if(err){
 		console.log('mongodb could not connect', err);

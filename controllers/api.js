@@ -6,7 +6,6 @@ var User = require('../models/user');
 var jsonParser = bodyParser.json();
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
-
 module.exports = function(app){
 
 // parse application/x-www-form-urlencoded 
@@ -35,6 +34,8 @@ app.use(jsonParser);
 	  		}
 	  		console.log(user);
 	  		req.session.user = user.username;
+	  		//Bingo.username = user.username;
+	  		app.set('settings', { username: user.username });
 	  		return res.status(200).json({username:user.username});
 	  	});
 	})

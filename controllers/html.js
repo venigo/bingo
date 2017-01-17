@@ -5,9 +5,20 @@ var bodyParser = require('body-parser');
 var jsonParser = bodyParser.json();
 var urlencodedParser = bodyParser.urlencoded({ extended: false });*/
 var Room = require('../models/room');
-var Bingo = {};
+var User = require('../models/user');
+var Bingo = Bingo || {};
+//get user details
+/*User.find({username:req.session.user}, function(err, user){
+	if(err){
+		res.status(500).send(err);
+		return;
+	}
+	Bingo.user_details = user;
+	console.log(Bingo.user_details,'details');
+})*/
+//console.log(app.get('settings'), 'session');
 module.exports = function(app){
-
+//console.log(app.get('settings'), 'session2');
 	app.get('/', function(req, res){
 		Bingo = {
 			user : req.session.user,
@@ -31,13 +42,14 @@ module.exports = function(app){
 				return;
 			}
 			Bingo.rooms = rooms;
-			console.log(Bingo)
+			//console.log(Bingo)
 	    	res.render('bingo75', {Bingo:Bingo})
 		})
 		
 	    //res.redirect('/bingo75');
 	})
-	app.get('/bingo90', function(req, res){
+	app.get('/bingo90', function(req, res){ 
+		//console.log(app.get('settings'), 'session3');
 		if(!req.session.user){
 			res.redirect('/');
 			return;
@@ -53,7 +65,17 @@ module.exports = function(app){
 				return;
 			}
 			Bingo.rooms = rooms;
-			res.render('bingo90', {Bingo:Bingo})
+			User.find({username:req.session.user}, function(err, user){
+				if(err){
+					res.status(500).send(err);
+					return;
+				}
+				Bingo.user_details = user;
+				console.log(Bingo.user_details,'details');
+				res.render('bingo90', {Bingo:Bingo})
+			})
+			//console.log(Bingo);
+			//res.render('bingo90', {Bingo:Bingo})
 		})
 	    
 	})
