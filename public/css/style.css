@@ -9,15 +9,18 @@ body {
      color: black;
      font-family: Verdana, Arial, Helvetica, sans-serif;
      font-size: 1rem;
-     background: -webkit-radial-gradient(5px 5px, circle, #f2f2f2, #f9f9f9);
+     background: -webkit-radial-gradient(5px 5px, circle, #806641, #AE956D);
     background: -moz-radial-gradient(5px 5px, circle, #f2f2f2, #f9f9f9);
     background: radial-gradient(5px 5px, circle, #f2f2f2, #333);
 }
+.body-background{
+    background: -webkit-radial-gradient(5px 5px, circle, #806641, #AE956D);
+     background: -moz-radial-gradient(5px 5px, circle, #806641, #AE956D);
+    background: radial-gradient(5px 5px, circle, #806641, #AE956D)
+}
 .navbar-inverse {
     color: #fff !important;
-    background-color: #222;
-    box-shadow: 0px 5px 5px #666;
-    background: -webkit-radial-gradient(circle at 50% 1000%, #81e8f6, #76deef 1%, #055194 80%, #062745 100%);
+    background: -webkit-radial-gradient(5px 5px, circle, #D34328, #020731);
     background: -moz-radial-gradient(circle at 50% 1000%, #81e8f6, #76deef 1%, #055194 80%, #062745 100%);
     background: radial-gradient(circle at 50% 1000%, #81e8f6, #76deef 1%, #055194 80%, #062745 100%);
 }

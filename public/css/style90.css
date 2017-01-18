@@ -8,15 +8,23 @@ body {
      color: black;
      font-family: Verdana, Arial, Helvetica, sans-serif;
      font-size: 1rem;
-     background: #4b0082;
+
+     background: -webkit-radial-gradient(5px 5px, circle, #806641, #AE956D);
+     background: -moz-radial-gradient(5px 5px, circle, #806641, #AE956D);
+    background: radial-gradient(5px 5px, circle, #806641, #AE956D)
      /*background: -webkit-radial-gradient(5px 5px, circle, #4b0082, #020731);
     background: -moz-radial-gradient(5px 5px, circle, #4b0082, #020731);
     background: radial-gradient(5px 5px, circle, #4b0082, #020731);*/
 }
+.body-background{
+    background: -webkit-radial-gradient(5px 5px, circle, #806641, #AE956D);
+     background: -moz-radial-gradient(5px 5px, circle, #806641, #AE956D);
+    background: radial-gradient(5px 5px, circle, #806641, #AE956D)
+}
 .header-row{
-    background: -webkit-radial-gradient(5px 5px, circle, #4b0082, #020731);
-    background: -moz-radial-gradient(5px 5px, circle, #4b0082, #020731);
-    background: radial-gradient(5px 5px, circle, #4b0082, #020731);
+    background: -webkit-radial-gradient(5px 5px, circle, #D34328, #020731);
+    background: -moz-radial-gradient(5px 5px, circle, #D34328, #020731);
+    background: radial-gradient(5px 5px, circle, #D34328, #020731);
     margin-bottom: 1rem;
 }
 .navbar-inverse {
@@ -27,17 +35,17 @@ body {
     background: -moz-radial-gradient(circle at 50% 1000%, #81e8f6, #76deef 1%, #055194 80%, #062745 100%);
     background: radial-gradient(circle at 50% 1000%, #81e8f6, #76deef 1%, #055194 80%, #062745 100%);
 }
-.navbar a:link {
-    color: green;
+li>a:link {
+    color: #999 !important;
 }
-.navbar a:visited {
-    color: green;
+li>a:visited {
+    color: #333 !important;
 }
-.navbar a:hover {
-    color: red;
+li>a:hover {
+    color: #999 !important;
 }
-.navbar a:active {
-    color: yellow;
+li>a:active {
+    color: yellow !important;
 }
 .play-btn{
     margin-bottom: 1rem;
@@ -46,15 +54,18 @@ body {
 .card90{
     width: 100%;
     border: 2px solid #806641;
-    box-shadow: 5px 5px 5px #AE956D;
+    box-shadow: 5px 5px 5px #020731;
     border-radius: 4px;
-    padding: 5px;
+    padding: 1px;
     margin: 5px;
     color: #999;
     font-weight: bold;
 }
 .card90 .nav>li>a{
     padding: 0px !important;
+    background: -webkit-radial-gradient(25px 25px, circle, #AE956D, #806641);
+    background: -moz-radial-gradient(25px 25px, circle, #AE956D, #806641);
+    background: radial-gradient(25px 25px, circle, #AE956D, #806641);
 }
 .card90-header{
     width: 100%;
@@ -67,7 +78,7 @@ body {
     padding: 1rem;
     position: absolute;
     z-index: 999;
-    background: indianred;
+    background: indigo;
     border-right: 5px steelblue solid;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 15px;
@@ -89,8 +100,8 @@ body {
     }
 
 .table90 th, td {
-    padding: 8px 0px;
-    border: 1px solid #ddd;
+    padding: 5px 0px;
+    border: 1px solid #999;
     text-align: center;
     color: #fff;
     font-weight: bold;
@@ -137,8 +148,8 @@ body {
   padding-left: 0;
 }
 footer {
-    /*margin: 5px 0;
-    padding:5px;*/
+    margin: 5px 0;
+    padding:5px;
 }
 
 
