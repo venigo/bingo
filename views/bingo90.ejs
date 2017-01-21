@@ -20,11 +20,11 @@
                         </div>
                     <div>
                 </div> -->
-                <div class="card90 header-row">
+                <div class="card90" style="border: 2px solid #c00;">
                     <table class="table90 pattern" >
                         <tr>
-                            <td>Players
-                            <ul class="nav nav-pills nav-stacked" style="    padding: 1rem; max-height: 120px;overflow-y: scroll;">
+                            <td style="border: 2px solid #ff5a01;"><a style="margin-left: -0.8rem;" class="btn btn-orange"><i class="fa fa-users left"></i> Players</a>
+                            <ul class="nav nav-pills nav-stacked" style="max-height: 120px;overflow-y: scroll;width:150px">
                               <li class="active"><a href="#">Peter</a></li>
                               <li class="active"><a href="#">Robert</a></li>
                               <li class="active"><a href="#">John</a></li>
@@ -37,26 +37,34 @@
                             </ul>
                   
                         </td>
-                            <td>
-                            Prize
-                                <ul class="nav nav-pills nav-stacked" style="    padding: 1rem; max-height:60px;overflow-y: scroll;">
+                            <td style="border: 2px solid blue;">
+                            <a class="btn btn-indigo"><i class="fa fa-gift left"></i> Prize</a>
+                            <div class="clearfix"></div>
+                            <span class="label label-warning">Line 1: &euro;5</span>
+                            <span class="label label-info">Line 2: &euro;10</span>
+                            <span class="label label-success">Full Card <span class="badge">&euro;25</span></span>
+                                <!-- <ul class="nav nav-pills nav-stacked" style="    padding: 1rem; max-height:60px;overflow-y: scroll;">
                               <li class="active"><a href="#">Full Card: $10</a></li>
                                                        
-                            </ul>
-                            <hr class="hr" style="margin: 0;padding: 3px;">
-                            Winners
-                            <ul class="nav nav-pills nav-stacked" style="    padding: 1rem; max-height: 60px;overflow-y: scroll;">
+                            </ul> -->
+                            <hr class="hr" style="margin:10px;">
+                            <a class="btn btn-pink"><i class="fa fa-star left"></i> Winners</a>
+                            <div class="clearfix"></div>
+                            <span class="label label-warning">Peter</span>
+                            <span class="label label-info">John</span>
+                            <span class="label label-success">Ravi</span>
+                            <!-- <ul class="nav nav-pills nav-stacked" style="    padding: 1rem; max-height: 60px;overflow-y: scroll;">
                                   <li class="active"><a href="#">Peter</a></li>
                                   <li class="active"><a href="#">Robert</a></li>
                                   <li class="active"><a href="#">John</a></li>
-                               </ul>
+                               </ul> -->
                             </td>
                         </tr>
                     </table> 
                     
                 </div>
                 <div class="clearfix"></div>
-                <div class="card90 header-row" style="height: 360px;text-align: center">
+                <div class="card90" style="height: 295px;text-align: center">
                     <h2>Chat Box</h2>
                 </div>
             </div>
@@ -66,9 +74,23 @@
                         if(Bingo.cards > 0){
                         for(var i=0; i < Bingo.cards; i++) { 
                         var newNum = Math.floor(Math.random() * 75) + 1;
+                        var nm;
+                        if(i<37 && i>=30){
+                            nm = 36;
+                        } else if(i<30 && i>=24) {
+                            nm = 30;
+                        } else if(i<24 && i>=18) {
+                            nm = 24;
+                        }else if(i<18 && i>=12) {
+                            nm = 18;
+                        }else if(i<12 && i>=6) {
+                            nm = 12;
+                        }else{
+                            nm = 6;
+                        }
                     %>
-                    <div class="col-sm-6 col-lg-6 col-md-6">
-                    <div class="card90 header-row">
+                    <div class="col-md-6 card-nm<%= nm %>">
+                    <div class="card90">
                     <table class="table90 pattern" id="card_<%= i %>">
 
                         <tr>
@@ -110,10 +132,33 @@
                     </div>
                     <%      } 
                         } else {
-                        for(var i=1; i < 13; i++) {
+                        for(var i=1; i < 37; i++) {
+                        var nm;
+                        if(i<37 && i>30){
+                            nm = 36;
+                        } else if(i<31 && i>24) {
+                            nm = 30;
+                        } else if(i<25 && i>18) {
+                            nm = 24;
+                        }else if(i<19 && i>12) {
+                            nm = 18;
+                        }else if(i<13 && i>6) {
+                            nm = 12;
+                        }else{
+                            nm = 6;
+                        }
                     %>
-<div class="col-md-6"><div class="card90 header-row" style="height: 76px;text-align: center;"><h3>Card <%= i %></h3></div></div>
+<div class="col-md-6 card-nm<%= nm %>"><div class="card90" style="height: 72px;text-align: center;"><h3>Card <%= i %></h3></div></div>
                     <%  }    } %>
+                    <div class="clearfix"></div>
+                    <div class="book-btn">
+                        <a id="book1" class="btn btn-brown"><i class="fa fa-book left"></i> Book 1</a>
+                        <a id="book2" class="btn btn-brown"><i class="fa fa-book left"></i> Book 2</a>
+                        <a id="book3" class="btn btn-brown"><i class="fa fa-book left"></i> Book 3</a>
+                        <a id="book4" class="btn btn-brown"><i class="fa fa-book left"></i> Book 4</a>
+                        <a id="book5" class="btn btn-brown"><i class="fa fa-book left"></i> Book 5</a>
+                        <a id="book6" class="btn btn-brown"><i class="fa fa-book left"></i> Book 6</a>
+                    </div>
                 </div>
             </div>
 
@@ -385,5 +430,57 @@ $( document ).ready(function() {
             }
         }
     <% } %>
+
+
+    //slider fo cards
+    var divs = $('.table90-container').find('.card90');
+    $(divs).each(function(i, e){
+        if(i>5){
+            $(this).hide();
+        }
+    })
+    $('#book1, #book2, #book3, #book4, #book5, #book6').hide();
+    <% if(Bingo.cards == 6){ %>
+        $('#book1').show();
+    <% } %>
+    <% if(Bingo.cards == 12){ %>
+        $('#book1, #book2').show();
+    <% } %>
+    <% if(Bingo.cards == 18){ %>
+        $('#book1, #book2, #book3').show();
+    <% } %>
+    <% if(Bingo.cards == 24){ %>
+        $('#book1, #book2, #book3, #book4').show();
+    <% } %>
+    <% if(Bingo.cards == 30){ %>
+        $('#book1, #book2, #book3, #book4, #book5').show();
+    <% } %>
+    <% if(Bingo.cards == 36){ %>
+        $('#book1, #book2, #book3, #book4, #book5, #book6').show();
+    <% } %>
+    $('#book1').on('click', function(){
+        $('.table90-container .card90').hide();
+        $('.table90-container .card-nm6 .card90').show();
+    })
+    $('#book2').on('click', function(){ //alert('ko');
+        $('.table90-container .card90').hide();
+        $('.table90-container .card-nm12 .card90').show();
+    })
+    $('#book3').on('click', function(){
+        $('.table90-container .card90').hide(); 
+        $('.table90-container .card-nm18 .card90').show();
+    })
+    $('#book4').on('click', function(){
+        $('.table90-container .card90').hide(); 
+        $('.table90-container .card-nm24 .card90').show();
+    })
+    $('#book5').on('click', function(){
+        $('.table90-container .card90').hide(); 
+        $('.table90-container .card-nm30 .card90').show();
+    })
+    $('#book6').on('click', function(){
+        $('.table90-container .card90').hide(); 
+        $('.table90-container .card-nm36 .card90').show();
+    })
 });
 </script>

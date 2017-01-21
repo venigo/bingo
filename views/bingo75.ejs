@@ -5,8 +5,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3">
-                <p class="lead">Players</p>
-                <div class="list-group">
+                <!-- <p class="lead">Players</p> -->
+                <div class="list-group card75">
                     <a href="#" class="list-group-item">Player 1</a>
                     <a href="#" class="list-group-item">Player 2</a>
                     <a href="#" class="list-group-item">Player 3</a>
@@ -90,7 +90,7 @@
                     <!-- <div class="bingoball"></div> -->
                     
                 </div>
-                <div class="card75 text-center">
+                <div class="card75 text-center" style="text-align: center">
                     <h4>Rooms: Choose cards and click on Play to enter the room. </h4>
                     <select name="cards" id="cards" style="width:100px;margin: 0 auto;" class="form-control">
                             <%  for(var j=1; j < 21; j++) {   %>
@@ -102,7 +102,7 @@
                     <% if(Bingo.rooms.length > 0){ 
                         for(i=0;i<Bingo.rooms.length;i++){
                     %>
-                    <div class="row room">
+                    <div class="row card75">
                         <div class="col-md-4 room-name">
                             <h5>Room : <%= Bingo.rooms[i].name %></h5></div>
                         <div class="col-md-4 room-desc">
@@ -282,7 +282,7 @@ $( document ).ready(function() {
                 array75.splice(index, 1);
             }
             //document.getElementById("card_"+i+"_square"  + j).innerHTML = newNum;
-            $("#counter_ball_"  + counter_ball).addClass('green');
+            $("#counter_ball_"  + counter_ball).addClass('red-td');
             //$('.ball_num').show();
             $('.ball_num'+cnt).html(counter_ball);
             
