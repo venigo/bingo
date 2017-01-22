@@ -361,10 +361,12 @@ $( document ).ready(function() {
         var num = <%= Bingo.cards %>;
         $('#btn_tick').attr('disabled','disabled');
         //var pattern = ['TopLine','BottomLine','MiddleLine','TBLine','TMLine','BMLine'];
-        var pattern = ['TopLine','BottomLine','MiddleLine'];
+        //var pattern = ['TopLine','BottomLine','MiddleLine'];
+        var pattern = 'none';
         var selected_pattern = pattern[Math.floor(Math.random()*pattern.length)];
         bingo90 = new Bingo90(num, selected_pattern);
         bingo90.newCard();
+        //bingo90.createCards();
 
         var array90 = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,
                        21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,
@@ -372,6 +374,8 @@ $( document ).ready(function() {
                        61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,
                        81,82,83,84,85,86,87,88,89,90];
         var cnt = 0;
+        var winnerLine1Shown = 0;
+        var winnerLine2Shown = 0;
         var stopCounter = setInterval(function(){ 
             cnt++;
             //$('#rolling_ball').html('<div class="circle"><div class="ball_num"></div></div>');
@@ -403,6 +407,35 @@ $( document ).ready(function() {
                 jQuery('#rolling_ball > div:first-of-type').remove();
                 //jQuery('.bingoball'+cnt).addClass('smallball');
             }
+
+            //winner
+            if(!winnerLine1Shown){
+                if (bingo90.winnerLine1 == 1 || bingo90.winnerLine2 == 1 || bingo90.winnerLine3 == 1){
+                    console.log("Hurray! We have a 1 line winner!");
+                    //$('#modalWinnerLine1').modal('show');
+                    alert('Hurray! We have a 1 line winner!');
+                    //return;
+                    winnerLine1Shown = 1;
+                }
+            }
+            if(!winnerLine2Shown){
+                if (bingo90.winnerLine2 == 1){
+                    console.log("Hurray! We have a 2 lines winner!");
+                    //$('#modalWinnerLine2').modal('show');
+                    alert('Hurray! We have a 2 lines winner!');
+                    winnerLine2Shown = 1;
+                }
+            }
+            if(!this.winnerLine3Shown){
+                if (bingo90.winnerLine3 == 1){
+                    console.log("Yay..! We have a full house winner");
+                    $('#modalWinnerLine3').modal('show');
+                    //return;
+                    clearInterval(stopCounter);
+                }
+            }
+            //winner end
+
          }, 2500);
             //console.log(array75);
         function animate(cnt){
@@ -431,6 +464,7 @@ $( document ).ready(function() {
         }
     <% } %>
 
+console.log(bingo90.winnerLine1);
 
     //slider fo cards
     var divs = $('.table90-container').find('.card90');
@@ -484,3 +518,57 @@ $( document ).ready(function() {
     })
 });
 </script>
+
+<div class="modal fade" id="modalWinnerLine1" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">One Line Winner!</h4>
+      </div>
+      <div class="modal-body">
+        <p>Hurray! We have a 1 line winner!</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="modalWinnerLine2" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Two Lines Winner!</h4>
+      </div>
+      <div class="modal-body">
+        <p>Hurray! We have a 2 lines winner!</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="modalWinnerLine3" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Full house Winner!</h4>
+      </div>
+      <div class="modal-body">
+        <p>Hurray! We have full house winner!</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
