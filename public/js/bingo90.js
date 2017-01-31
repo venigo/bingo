@@ -1,6 +1,6 @@
 //window.onload = newCard;
 /*function card_name(obj){
-		for (var i=0; i<obj.cards; i++) {
+		for (var i=0; i<obj.cards; i++) { 
 			obj.card_name_+i = [];
 		}
 	}*/
@@ -413,36 +413,44 @@ Bingo90.prototype.newCard = function() { console.log(this.cards,'newCard');
         //for (var j=0; j<30; j=j+5) {
             var num = getRandomInt(1, 20);
             document.getElementById("card_"+i+"_square0").innerHTML = num;
+            this.card_name['card_'+i+'_square0'] = num;
             //var num = getRandomInt(1, 20);
             //document.getElementById("card_"+i+"_square10").innerHTML = num;
             var num = getRandomInt(1, 20);
             document.getElementById("card_"+i+"_square20").innerHTML = num;
-
+            this.card_name['card_'+i+'_square20'] = num;
             //var num = getRandomInt(11, 20);
             //document.getElementById("card_"+i+"_square1").innerHTML = num;
             var num = getRandomInt(11, 20);
             document.getElementById("card_"+i+"_square11").innerHTML = num;
+            this.card_name['card_'+i+'_square11'] = num;
             var num = getRandomInt(11, 20);
             document.getElementById("card_"+i+"_square21").innerHTML = num;
+            this.card_name['card_'+i+'_square21'] = num;
 
             var num = getRandomInt(21, 30);
             document.getElementById("card_"+i+"_square2").innerHTML = num;
+            this.card_name['card_'+i+'_square2'] = num;
             var num = getRandomInt(21, 30);
             document.getElementById("card_"+i+"_square12").innerHTML = num;
+            this.card_name['card_'+i+'_square12'] = num;
             //var num = getRandomInt(21, 30);
             //document.getElementById("card_"+i+"_square22").innerHTML = num;
 
             var num = getRandomInt(31, 40);
             document.getElementById("card_"+i+"_square3").innerHTML = num;
+            this.card_name['card_'+i+'_square3'] = num;
             //var num = getRandomInt(31, 40);
             //document.getElementById("card_"+i+"_square13").innerHTML = num;
             var num = getRandomInt(31, 40);
             document.getElementById("card_"+i+"_square23").innerHTML = num;
+            this.card_name['card_'+i+'_square23'] = num;
 
             //var num = getRandomInt(41, 50);
             //document.getElementById("card_"+i+"_square4").innerHTML = num;
             var num = getRandomInt(41, 50);
             document.getElementById("card_"+i+"_square14").innerHTML = num;
+            this.card_name['card_'+i+'_square14'] = num;
             //var num = getRandomInt(41, 50);
             //document.getElementById("card_"+i+"_square24").innerHTML = num;
 
@@ -450,18 +458,21 @@ Bingo90.prototype.newCard = function() { console.log(this.cards,'newCard');
             //document.getElementById("card_"+i+"_square5").innerHTML = num;
             var num = getRandomInt(51, 60);
             document.getElementById("card_"+i+"_square15").innerHTML = num;
+            this.card_name['card_'+i+'_square15'] = num;
             var num = getRandomInt(51, 60);
             document.getElementById("card_"+i+"_square25").innerHTML = num;
-
+            this.card_name['card_'+i+'_square25'] = num;
             //var num = getRandomInt(61, 70);
             //document.getElementById("card_"+i+"_square6").innerHTML = num;
             var num = getRandomInt(61, 70);
             document.getElementById("card_"+i+"_square16").innerHTML = num;
+            this.card_name['card_'+i+'_square16'] = num;
             //var num = getRandomInt(61, 70);
             //document.getElementById("card_"+i+"_square26").innerHTML = num;
 
             var num = getRandomInt(71, 80);
             document.getElementById("card_"+i+"_square7").innerHTML = num;
+            this.card_name['card_'+i+'_square7'] = num;
             //var num = getRandomInt(71, 80);
             //document.getElementById("card_"+i+"_square17").innerHTML = num;
             //var num = getRandomInt(71, 80);
@@ -469,11 +480,12 @@ Bingo90.prototype.newCard = function() { console.log(this.cards,'newCard');
 
             var num = getRandomInt(81, 90);
             document.getElementById("card_"+i+"_square8").innerHTML = num;
+            this.card_name['card_'+i+'_square8'] = num;
             //var num = getRandomInt(81, 90);
             //document.getElementById("card_"+i+"_square18").innerHTML = num;
             var num = getRandomInt(81, 90);
             document.getElementById("card_"+i+"_square28").innerHTML = num;
-
+            this.card_name['card_'+i+'_square28'] = num;
 
             if(this.pattern == 'TopLine'){
             	this.patternTopLine(i);
@@ -484,8 +496,8 @@ Bingo90.prototype.newCard = function() { console.log(this.cards,'newCard');
             } else {
             	this.noPattern(i);
             }
-
     }
+    console.log(this, 'my object');
 }
 Bingo90.prototype.patternWinner = function(counterBall){
 	if(this.pattern == 'TopLine'){

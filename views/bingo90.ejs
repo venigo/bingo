@@ -1,5 +1,5 @@
-<%- include('header90'); %>
-
+<%- include('header90'); %> 
+<script src="/socket.io/socket.io.js"></script>
     <!-- Page Content -->
     <div class="container">
         <div class="row">
@@ -23,17 +23,16 @@
                 <div class="card90" style="border: 2px solid #c00;">
                     <table class="table90 pattern" >
                         <tr>
-                            <td style="border: 2px solid #ff5a01;"><a style="margin-left: -0.8rem;" class="btn btn-orange"><i class="fa fa-users left"></i> Players</a>
-                            <ul class="nav nav-pills nav-stacked" style="max-height: 120px;overflow-y: scroll;width:150px">
-                              <li class="active"><a href="#">Peter</a></li>
-                              <li class="active"><a href="#">Robert</a></li>
+                            <td style="border: 2px solid #ff5a01;vertical-align: top;"><a style="margin-left: -0.8rem;" class="btn btn-orange"><i class="fa fa-users left"></i> Players</a>
+                            <ul id="users_in_room" class="nav nav-pills nav-stacked" style="max-height: 120px;overflow-y: scroll;width:150px">
+                              <!-- <li class="active"><a href="#">Robert</a></li>
                               <li class="active"><a href="#">John</a></li>
                               <li class="active"><a href="#">Lidia</a></li>
                               <li class="active"><a href="#">Misha</a></li>
                               <li class="active"><a href="#">Deepak</a></li>
                               <li class="active"><a href="#">Deepak</a></li>
                               <li class="active"><a href="#">Sarah</a></li>
-                              <li class="active"><a href="#">Rosy</a></li>
+                              <li class="active"><a href="#">Rosy</a></li> -->
                             </ul>
                   
                         </td>
@@ -64,8 +63,15 @@
                     
                 </div>
                 <div class="clearfix"></div>
-                <div class="card90" style="height: 295px;text-align: center">
-                    <h2>Chat Box</h2>
+                <div id="chat_box" class="card90" style="height: 225px;">
+                    <a class="btn btn-indigo" style="width: 95%;">
+                    <i class="fa fa-wechat left"> </i> Chat Box</a>
+                    <ul id="messages" style="padding: 0.5rem;overflow-y:scroll;max-height: 180px">
+                    </ul>
+                    <div class="chat-form" style="position: absolute;bottom: 0;"><input type="text" id="message" name="message" style="width: 65%;margin-right: 0.25rem;border: 1px solid #ddd;">
+                    <a class="btn btn-indigo pull-right" id="send_msg_btn">
+                    <i class="fa fa-send left"></i> Send</a>
+                    </div>
                 </div>
             </div>
             <div class="col-md-8">
@@ -350,25 +356,73 @@
     <!-- /.container -->
 
 <%- include('footer90'); %>
+<script>
+var socket = io();
+$('#send_msg_btn').hide();
+$('#message').hide();
+var data = {};
+<% if(Bingo.user_room && (Bingo.cards > 0)){ %>
+    console.log('here90')
+    data.user = "<%= Bingo.user %>";
+    data.user_room = "<%= Bingo.user_room %>";
+        console.log(data);
+        socket.emit('get user list', data);
+    $('#send_msg_btn').show();
+    $('#message').show();   
+  
+    $('#send_msg_btn').on('click', function(){
+        
+        var message = $('#message').val();
+        data.message = message;
+        socket.emit('send message', data);
+        $('#message').val('');
+        return false;
+    });
+    socket.on('show message', function(data){
+        $('#messages').append($('<li>').html('<b>'+data.user+'</b>: '+data.message));
+        $("#messages").animate({
+          "scrollTop": $('#messages')[0].scrollHeight
+        }, "fast");
+        //user list
+        
+    });
+    socket.on('show user list', function(users){ 
+        console.log(users);
+        var user_list = '';
+        for(i=0;i<users.length;i++){
+            user_list += '<li class="active"><a href="#">'+users[i]+'</a></li>';
+        }
+        if(user_list){
+            $('#users_in_room').html(user_list);
+        }
+    });
+<% } %>
+</script>
 <script type="text/javascript">
 $( document ).ready(function() {
     $('.play90').on('click', function(e){ 
+        
+        //return;
         var room = e.target.title;
         var card = $('#cards').val(); //alert(card);
         window.location = '/bingo90?cards='+card+'&room='+room;
     })
     <% if(Bingo.cards > 0){ %>
+        console.log('<%= Bingo.sayHello %>');
         var num = <%= Bingo.cards %>;
         $('#btn_tick').attr('disabled','disabled');
-        //var pattern = ['TopLine','BottomLine','MiddleLine','TBLine','TMLine','BMLine'];
-        //var pattern = ['TopLine','BottomLine','MiddleLine'];
+
         var pattern = 'none';
         var selected_pattern = pattern[Math.floor(Math.random()*pattern.length)];
-        bingo90 = new Bingo90(num, selected_pattern);
+        //bingo90 = new Bingo90(num, selected_pattern);
+        bingo90 = new Bingo90(num, 'none');
         bingo90.newCard();
         //bingo90.createCards();
-
-        var array90 = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,
+        bingo90.user_room = '<%= Bingo.user_room %>';
+        var winnerLine1Shown = 0;
+        var winnerLine2Shown = 0;
+        var winnerLine3Shown = 0;
+        /*var array90 = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,
                        21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,
                        41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,
                        61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,
@@ -378,15 +432,9 @@ $( document ).ready(function() {
         var winnerLine2Shown = 0;
         var stopCounter = setInterval(function(){ 
             cnt++;
-            //$('#rolling_ball').html('<div class="circle"><div class="ball_num"></div></div>');
             var bingoballHTML = '<div class="bingoball'+cnt+'"><h3 class="ball_num'+cnt+'"></h3>                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 206.2 206.2">                          <defs>                            <style>                              .ball{isolation:isolate;}.ballcolor{fill:grey;}.cls-3{opacity:0.48;fill:url(#linear-gradient);}.cls-3,.cls-6{mix-blend-mode:screen;}.cls-4{fill:none;stroke:#fff;stroke-miterlimit:10;stroke-width:4px;}.cls-5{fill:#fff;opacity:0.8;}.cls-6{fill:url(#radial-gradient);}                            </style>                            <linearGradient id="linear-gradient" x1="103.1" x2="103.1" y2="206.2" gradientTransform="rotate(.02 114.612 114.572)" gradientUnits="userSpaceOnUse">                              <stop offset="0" stop-color="#fff"></stop>                              <stop offset="1" stop-color="#2483c5" stop-opacity="0"></stop>                            </linearGradient>                            <radialGradient id="radial-gradient" cx="72.1" cy="64.1" r="53" gradientTransform="rotate(.02 114.612 114.572)" xlink:href="#linear-gradient"></radialGradient>                          </defs>                          <g class="ball">                            <g id="Laag_1" data-name="Laag 1">                              <path d="M206.2 102.2a103 103 0 0 1-104 104C46.2 205.7.5 160 0 104A103 103 0 0 1 104 0c56 .5 101.7 46.3 102.2 102.2z" class="ballcolor'+cnt+'"></path>                              <path d="M206.2 102.2a103 103 0 0 1-104 104C46.2 205.7.5 160 0 104A103 103 0 0 1 104 0c56 .5 101.7 46.3 102.2 102.2z" class="cls-3"></path>                              <path d="M175.3 102.5A72.2 72.2 0 1 1 103.7 31a72.2 72.2 0 0 1 71.6 71.5z" class="cls-4"></path>                              <path d="M169 102.5A66 66 0 1 1 103.8 37a66 66 0 0 1 65.4 65.5z" class="cls-5"></path>                              <path d="M125 63.6A53 53 0 1 1 72.7 11 53 53 0 0 1 125 63.7z" class="cls-6"></path>                            </g>                          </g></div>';
             $('#rolling_ball').append(bingoballHTML);
-            var counter_ball= array90[Math.floor(Math.random()*array90.length)];
-            var index = array90.indexOf(counter_ball);
-            if (index > -1) {
-                array90.splice(index, 1);
-            }
-            //document.getElementById("card_"+i+"_square"  + j).innerHTML = newNum;
+
             $("#counter_ball_"  + counter_ball).addClass('green');
             $('.ball_num'+cnt).html(counter_ball);
 
@@ -401,11 +449,12 @@ $( document ).ready(function() {
             jQuery('svg .ballcolor'+cnt).css('fill',colors[~~(Math.random()*colors.length)]);
 
             animate(cnt);
+
             bingo90.patternWinner(counter_ball);
+
             $("#counter_ball").html(cnt);
             if(cnt > 4){
                 jQuery('#rolling_ball > div:first-of-type').remove();
-                //jQuery('.bingoball'+cnt).addClass('smallball');
             }
 
             //winner
@@ -436,7 +485,58 @@ $( document ).ready(function() {
             }
             //winner end
 
-         }, 2500);
+         }, 2500);*/
+        var cnt = 0;
+        socket.emit('game counter', bingo90);
+        socket.on('show counter ball', function(data){ 
+            console.log(data, Object.keys(data.card_name).length, 'show counter ball');
+            for(key in data.card_name){
+                    if(data.card_name[key] == 'matched'){
+                        document.getElementById(key).className ='matched-cell';
+                    }
+                }
+             cnt++;
+            var bingoballHTML = '<div class="bingoball'+cnt+'"><h3 class="ball_num'+cnt+'"></h3>                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 206.2 206.2">                          <defs>                            <style>                              .ball{isolation:isolate;}.ballcolor{fill:grey;}.cls-3{opacity:0.48;fill:url(#linear-gradient);}.cls-3,.cls-6{mix-blend-mode:screen;}.cls-4{fill:none;stroke:#fff;stroke-miterlimit:10;stroke-width:4px;}.cls-5{fill:#fff;opacity:0.8;}.cls-6{fill:url(#radial-gradient);}                            </style>                            <linearGradient id="linear-gradient" x1="103.1" x2="103.1" y2="206.2" gradientTransform="rotate(.02 114.612 114.572)" gradientUnits="userSpaceOnUse">                              <stop offset="0" stop-color="#fff"></stop>                              <stop offset="1" stop-color="#2483c5" stop-opacity="0"></stop>                            </linearGradient>                            <radialGradient id="radial-gradient" cx="72.1" cy="64.1" r="53" gradientTransform="rotate(.02 114.612 114.572)" xlink:href="#linear-gradient"></radialGradient>                          </defs>                          <g class="ball">                            <g id="Laag_1" data-name="Laag 1">                              <path d="M206.2 102.2a103 103 0 0 1-104 104C46.2 205.7.5 160 0 104A103 103 0 0 1 104 0c56 .5 101.7 46.3 102.2 102.2z" class="ballcolor'+cnt+'"></path>                              <path d="M206.2 102.2a103 103 0 0 1-104 104C46.2 205.7.5 160 0 104A103 103 0 0 1 104 0c56 .5 101.7 46.3 102.2 102.2z" class="cls-3"></path>                              <path d="M175.3 102.5A72.2 72.2 0 1 1 103.7 31a72.2 72.2 0 0 1 71.6 71.5z" class="cls-4"></path>                              <path d="M169 102.5A66 66 0 1 1 103.8 37a66 66 0 0 1 65.4 65.5z" class="cls-5"></path>                              <path d="M125 63.6A53 53 0 1 1 72.7 11 53 53 0 0 1 125 63.7z" class="cls-6"></path>                            </g>                          </g></div>';
+            $('#rolling_ball').append(bingoballHTML);   
+            $("#counter_ball_"  + data.counter_ball).addClass('green');
+            $('.ball_num'+cnt).html(data.counter_ball);
+            var colors=["blue","orange","red","green","yellow","pink","aqua","lime","purple","cyan","brown","grey","darkred","deeppink","gold","indigo"];
+     
+            jQuery('svg .ballcolor'+cnt).css('fill',colors[~~(Math.random()*colors.length)]);
+
+            animate(cnt);
+            //winner
+            if(!winnerLine1Shown){
+                if (data.winnerLine1 == 1 || data.winnerLine2 == 1 || data.winnerLine3 == 1){
+                    console.log("Hurray! We have a 1 line winner!");
+                    $('#modalWinnerLine1').modal('show');
+                    //alert('Hurray! We have a 1 line winner!');
+                    //return;
+                    winnerLine1Shown = 1;
+                    //data.winnerLine1Shown = 1;
+                }
+            }
+            if(!winnerLine2Shown){
+                if (data.winnerLine2 == 1){
+                    console.log("Hurray! We have a 2 lines winner!");
+                    $('#modalWinnerLine2').modal('show');
+                    //alert('Hurray! We have a 2 lines winner!');
+                    winnerLine2Shown = 1;
+                    //data.winnerLine2Shown = 1;
+                }
+            }
+            if(!winnerLine3Shown){
+                if (data.winnerLine3 == 1){
+                    console.log("Yay..! We have a full house winner");
+                    $('#modalWinnerLine3').modal('show');
+                    winnerLine3Shown = 1;
+                    //data.winnerLine3Shown = 1;
+                    //return;
+                    //clearInterval(stopCounter);
+                }
+            }
+            //socket.emit('game counter', bingo90);
+        });
             //console.log(array75);
         function animate(cnt){
             
@@ -452,7 +552,7 @@ $( document ).ready(function() {
             } else {
                 $('.bingoball'+cnt).animate({left: '650px',opacity:'1'}, 500, animate);
                 
-                console.log(z);
+                //console.log(z);
                 //$('.bingoball'+z).css('left:650px','-webkit-animation:inherit','animation:inherit', 'transition:inherit');
                 $('.bingoball'+z).css('left','850px');
                 $('.bingoball'+z).addClass('smallball');

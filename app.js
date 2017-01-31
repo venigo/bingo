@@ -4,7 +4,7 @@ var session = require('express-session');
 var controllers = require('./controllers');
 //var bodyParser = require('body-parser');
 //var html = require('./controllers/html');
-var mongoose = require('mongoose');
+var mongoose = require('mongoose'); 
 
 mongoose.connect('mongodb://127.0.0.1:27017/bingo', function(err){
 	if(err){
@@ -15,6 +15,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/bingo', function(err){
 	console.log('Mongodb Connected ..!')
 });
 var app = express();
+var http = require('http').Server(app);
 
 var port = process.env.PORT || 3030;
 
@@ -30,7 +31,8 @@ app.use(session({
 
 controllers.html(app);
 controllers.api(app);
+controllers.chat(http);
 //html(app);
 
-app.listen(port);
+http.listen(port);
 console.log('Bingo started on: ', port);

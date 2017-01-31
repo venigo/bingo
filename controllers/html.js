@@ -6,7 +6,8 @@ var jsonParser = bodyParser.json();
 var urlencodedParser = bodyParser.urlencoded({ extended: false });*/
 var Room = require('../models/room');
 var User = require('../models/user');
-var Bingo = Bingo || {};
+var Bingo90 = require('../models/bingo90');
+var Bingo = Bingo || {}; 
 //get user details
 /*User.find({username:req.session.user}, function(err, user){
 	if(err){
@@ -34,6 +35,7 @@ module.exports = function(app){
 		//Bingo = {
 			Bingo.user = req.session.user,
 			Bingo.cards = req.query.cards,
+			Bingo.user_room = req.query.room,
 			Bingo.url = 'bingo75' //req.url
 		//}
 		Room.find({type:'bingo75'}, function(err, rooms){
@@ -57,6 +59,7 @@ module.exports = function(app){
 		Bingo = {
 			user : req.session.user,
 			cards : req.query.cards,
+			user_room : req.query.room,
 			url : 'bingo90' //req.url
 		}
 		Room.find({type:'bingo90'}, function(err, rooms){
@@ -71,11 +74,15 @@ module.exports = function(app){
 					return;
 				}
 				Bingo.user_details = user;
-				console.log(Bingo.user_details,'details');
+				//console.log(Bingo.user_details,'details');
+				/*var pattern = 'none';
+		        var selected_pattern = pattern[Math.floor(Math.random()*pattern.length)];
+		        bingo90 = new Bingo90(Bingo.cards, selected_pattern);
+		        console.log(bingo90,'object -- Bingo90');
+		        Bingo.newCards = bingo90.newCards();*/
 				res.render('bingo90', {Bingo:Bingo})
 			})
-			//console.log(Bingo);
-			//res.render('bingo90', {Bingo:Bingo})
+		//res.render('bingo90', {Bingo:Bingo})
 		})
 	    
 	})

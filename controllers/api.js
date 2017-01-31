@@ -32,7 +32,7 @@ app.use(jsonParser);
 	  			res.status(404).send(err);
 	  			return;
 	  		}
-	  		console.log(user);
+	  		//console.log(user);
 	  		req.session.user = user.username;
 	  		//Bingo.username = user.username;
 	  		app.set('settings', { username: user.username });
