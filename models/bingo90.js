@@ -1,7 +1,7 @@
 
 
-var Bingo90 = function(cards, pattern){ 
-	this.cards = cards;
+var Bingo90 = function(){ 
+	/*this.cards = cards;
 	this.pattern = pattern;
 	this.card_name = {};
 	this.winnerLine1 = 0;
@@ -9,7 +9,7 @@ var Bingo90 = function(cards, pattern){
 	this.winnerLine2 = 0;
 	this.winnerLine2Shown = 0;
 	this.winnerLine3 = 0;
-	this.winnerLine3Shown = 0;
+	this.winnerLine3Shown = 0;*/
 
 	this.sayHello = function(){
 		return 'Hello' + this.cards;
@@ -73,6 +73,102 @@ var Bingo90 = function(cards, pattern){
             }
         return table;
 	}
+    this.winner90 = function(data){
+        var obj_length = Object.keys(data.card_name).length;
+        for(key in data.card_name){
+            if(data.card_name[key] == data.counter_ball){
+                data.card_name[key] = 'matched';
+            }
+        }
+        for(i=0;i<obj_length;i++){
+            //line 1 winner
+            if(!data.winnerLine1){
+                if(data.card_name["card_"+i+"_square0"] == 'matched'  &&
+                    data.card_name["card_"+i+"_square2"] == 'matched' &&
+                    data.card_name["card_"+i+"_square3"] == 'matched' &&
+                    data.card_name["card_"+i+"_square7"] == 'matched' &&
+                    data.card_name["card_"+i+"_square8"] == 'matched'){
+                    data.winnerLine1 = 1;
+                    //data.winnerLine1Shown = 1;
+                }
+                if(data.card_name["card_"+i+"_square11"]  == 'matched' &&
+                    data.card_name["card_"+i+"_square12"] == 'matched' &&
+                    data.card_name["card_"+i+"_square14"] == 'matched' &&
+                    data.card_name["card_"+i+"_square15"] == 'matched' &&
+                    data.card_name["card_"+i+"_square16"] == 'matched'){
+                    data.winnerLine1 = 1;
+                    //data.winnerLine1Shown = 1;
+                }
+                if(data.card_name["card_"+i+"_square20"] == 'matched' &&
+                    data.card_name["card_"+i+"_square21"] == 'matched' &&
+                    data.card_name["card_"+i+"_square23"] == 'matched' &&
+                    data.card_name["card_"+i+"_square25"] == 'matched' &&
+                    data.card_name["card_"+i+"_square28"] == 'matched'){
+                    data.winnerLine1 = 1;
+                    //data.winnerLine1Shown = 1;
+                }
+            }
+            //2 lines winner
+            if(!data.winnerLine2){
+                if((data.card_name["card_"+i+"_square0"] == 'matched' &&
+                    data.card_name["card_"+i+"_square2"] == 'matched' &&
+                    data.card_name["card_"+i+"_square3"] == 'matched' &&
+                    data.card_name["card_"+i+"_square7"] == 'matched' &&
+                    data.card_name["card_"+i+"_square8"] == 'matched' && 
+                    data.card_name["card_"+i+"_square11"] == 'matched' &&
+                    data.card_name["card_"+i+"_square12"] == 'matched' &&
+                    data.card_name["card_"+i+"_square14"] == 'matched' &&
+                    data.card_name["card_"+i+"_square15"] == 'matched' &&
+                    data.card_name["card_"+i+"_square16"] == 'matched') 
+                ||
+                (   data.card_name["card_"+i+"_square11"] == 'matched' &&
+                    data.card_name["card_"+i+"_square12"] == 'matched' &&
+                    data.card_name["card_"+i+"_square14"] == 'matched' &&
+                    data.card_name["card_"+i+"_square15"] == 'matched' &&
+                    data.card_name["card_"+i+"_square16"] == 'matched' &&
+                    data.card_name["card_"+i+"_square20"] == 'matched' &&
+                    data.card_name["card_"+i+"_square21"] == 'matched' &&
+                    data.card_name["card_"+i+"_square23"] == 'matched' &&
+                    data.card_name["card_"+i+"_square25"] == 'matched' &&
+                    data.card_name["card_"+i+"_square28"] == 'matched')
+                ||
+                (   data.card_name["card_"+i+"_square0"] == 'matched' &&
+                    data.card_name["card_"+i+"_square2"] == 'matched' &&
+                    data.card_name["card_"+i+"_square3"] == 'matched' &&
+                    data.card_name["card_"+i+"_square7"] == 'matched' &&
+                    data.card_name["card_"+i+"_square8"] == 'matched' && 
+                    data.card_name["card_"+i+"_square20"] == 'matched' &&
+                    data.card_name["card_"+i+"_square21"] == 'matched' &&
+                    data.card_name["card_"+i+"_square23"] == 'matched' &&
+                    data.card_name["card_"+i+"_square25"] == 'matched' &&
+                    data.card_name["card_"+i+"_square28"] == 'matched')){
+                    data.winnerLine2 = 1;
+                    //data.winnerLine2Shown = 1;
+                }
+            }
+            //full house win
+            if( data.card_name["card_"+i+"_square0"] == 'matched' &&
+                data.card_name["card_"+i+"_square2"] == 'matched' &&
+                data.card_name["card_"+i+"_square3"] == 'matched' &&
+                data.card_name["card_"+i+"_square7"] == 'matched' &&
+                data.card_name["card_"+i+"_square8"] == 'matched' && 
+                data.card_name["card_"+i+"_square11"] == 'matched' &&
+                data.card_name["card_"+i+"_square12"] == 'matched' &&
+                data.card_name["card_"+i+"_square14"] == 'matched' &&
+                data.card_name["card_"+i+"_square15"] == 'matched' &&
+                data.card_name["card_"+i+"_square16"] == 'matched' &&
+                data.card_name["card_"+i+"_square20"] == 'matched' &&
+                data.card_name["card_"+i+"_square21"] == 'matched' &&
+                data.card_name["card_"+i+"_square23"] == 'matched' &&
+                data.card_name["card_"+i+"_square25"] == 'matched' &&
+                data.card_name["card_"+i+"_square28"] == 'matched'){
+                data.winnerLine3 = 1;
+                //data.winnerLine3Shown = 1;
+            }
+        } // for loop 
+        
+        return data;
+    }
 }
 
 module.exports = Bingo90;
