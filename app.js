@@ -20,7 +20,7 @@ var http = require('http').Server(app);
 var port = process.env.PORT || 3030;
 
 
-
+ 
 app.use('/assets', express.static(__dirname + '/public'));
 app.set('view engine', 'ejs');
 app.use(session({
